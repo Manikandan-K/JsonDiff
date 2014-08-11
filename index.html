@@ -1,0 +1,33 @@
+<!doctype html>
+
+<html>
+	<head>
+		<title>Construction under progress</title>
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<link rel="stylesheet" type="text/css" href="css/fontello.css">
+		<script type="text/javascript" src="js/jquery-2.0.3.js"></script>
+		<script type="text/javascript" src="js/underscore.js"></script>
+		<script type="text/javascript" src="js/jsonCompare.js"></script>
+		<script type="text/javascript" src="js/display.js"></script>
+		<script type="text/javascript" src="js/index.js"></script>
+	<head>
+
+	<body>
+		<h1>Json diff</h1>
+		
+		<div class="errors"></div>
+		<div class="inputs">
+			<div>
+				<textarea id = "json1" class="input"></textarea>
+				<textarea id = "json2" class="input"></textarea>
+			</div>
+			<div class ='btn'>
+				<input type="button" value="Find difference" onclick="diff()"></input>
+				<input type="button" value="Clear" onclick="clearText()"></input>
+				<input type="button" value="Format" onclick="beautify()"></input>
+			</div>
+		</div>
+		<div class="result">
+		</div>
+	</body>
+</html>
