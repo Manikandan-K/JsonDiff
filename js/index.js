@@ -22,8 +22,13 @@ var diff = function() {
 		return;
 	}
 
-	var diff = compare(result1["json"], result2["json"])
-	display(diff);
+	var diff = findDifference(result1["json"], result2["json"])
+
+	if(diff.getAction() == COMPARISON.SAME) {
+		$('.result').text("No difference");
+	} else {
+		display(diff);
+	}
 }
 
 var beautify = function() {
