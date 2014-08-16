@@ -1,14 +1,15 @@
 var COMPARISON = {
-	SAME : 0,
-	CHANGE : 1,
-	ADD : 2,
-	REMOVE : 3,
-	MIXED : 4
+	SAME : "same",
+	CHANGE : "change",
+	ADD : "add",
+	REMOVE : "remove",
+	MIXED : "mixed"
 }
 
-var Difference = function(value1, value2, action) {
+var Difference = function(value1, value2, key, action) {
 	this.value1 = value1,
 	this.value2 = value2,
+	this.key = key ;
 	this.action = action,
 
 	this.getValue1 = function() {
@@ -19,14 +20,20 @@ var Difference = function(value1, value2, action) {
 		return this.value2;
 	},
 
+	this.getKey = function() {
+		return this.key;
+	},
+
 	this.getAction = function() {
 		return this.action;
 	}
 }
 
-var ObjectDifference = function(value, action) {
+var ObjectDifference = function(value, key, action, isArray) {
 	this.value 	= value;
 	this.action = action;
+	this.key = key;
+	this.isArray = isArray;
 
 	this.getValue = function() {
 		return this.value;
@@ -34,7 +41,21 @@ var ObjectDifference = function(value, action) {
 
 	this.getAction = function() {
 		return this.action;
+	},
+	
+	this.getKey = function() {
+		return this.key;
+	},
+
+	this.isAddOrRemove = function() {
+		return _.isEqual( this.action, COMPARISON.ADD) || _.isEqual( this.action, COMPARISON.REMOVE) ;
+	},
+
+	this.isRemoved = function(field) {
+		return (_.isEqual( this.action, COMPARISON.ADD) && field == 'value1')
+		 || (_.isEqual( this.action, COMPARISON.REMOVE) && field == 'value2')
 	}
+
 }
 
 var isSame = function(object) {
@@ -53,45 +74,62 @@ var isSame = function(object) {
 
 	return true;
 }
+var findDifference = function(json1, json2, key) {
+	var result = [];
+	var isArray = isArrays(json1, json2);
 
-var findDifference = function(json1, json2) {
-	var result = {};
-	var actions = [];
-
-	if(_.isEmpty(json1) && _.isEmpty(json2)) {
-		return new ObjectDifference(result,COMPARISON.SAME);
+	if(this.isEmpty(json1) && this.isEmpty(json2)) {
+		return new ObjectDifference(result,key, COMPARISON.SAME, isArray);
 	}
-
 	
 	var keys = _.union( getKeys(json1), getKeys(json2) );
 
 	keys.forEach(function(key){
 		var value1 = getValues(json1, key);
 		var value2 = getValues(json2, key);
-		var action;
+		if(isArray) key = undefined;
 
 		if( _.isObject(value1) || _.isObject(value2) ) 
-			result[key] = findDifference(value1, value2);
+			result.push( findDifference(value1, value2, key) );
 		else if( _.isEqual(value1, value2) )  
-			result[key] = new Difference(value1, value2, COMPARISON.SAME); 
+			result.push( new Difference(value1, value2, key, COMPARISON.SAME) ); 
 		else if( _.isUndefined(value1) ) 
-			result[key] = new Difference(value1, value2, COMPARISON.ADD); 
+			result.push( new Difference(value1, value2, key, COMPARISON.ADD) ); 
 		else if( _.isUndefined(value2) ) 
-			result[key] = new Difference(value1, value2, COMPARISON.REMOVE); 
+			result.push( new Difference(value1, value2, key, COMPARISON.REMOVE) ); 
 		else 
-			result[key] = new Difference(value1, value2, COMPARISON.CHANGE); 
+			result.push( new Difference(value1, value2, key, COMPARISON.CHANGE) ); 
 				
-		actions.push(result[key].getAction());		
 	});
 
-	var uniqueActions = _.uniq(actions);
-	var action = uniqueActions.length > 1 ? COMPARISON.MIXED : uniqueActions[0];
-
-	return new ObjectDifference(result,action);
+	var action = this.getAction(result, json1, json2);
+	return new ObjectDifference(result,key, action, isArray);
 }
 
+var isArrays = function(object1, object2) {
+	if(!_.isUndefined(object1))
+		return _.isArray(object1);
+	return _.isArray(object2);
+}
 
+var isEmpty = function(object) {
+	if(_.isUndefined(object))
+		return false;
+	return _.isEmpty(object);
+}
 
+var getAction = function(differences, object1, object2) {
+	var actions = _.pluck(differences, "action");
+	var uniqueActions = _.uniq(actions);
+	var action = uniqueActions.length > 1 ? COMPARISON.MIXED : uniqueActions[0];
+	if( _.isUndefined(object1))
+		action = COMPARISON.ADD;
+	if( _.isUndefined(object2))
+		action = COMPARISON.REMOVE;
+
+	return action;
+}
+ 
 var getValues = function(object, key) {
 	if( _.isUndefined(object) )
 		return undefined;

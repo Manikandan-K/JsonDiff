@@ -1,32 +1,28 @@
-body {
-	line-height: 50%;
+ul {
+	margin: 0;
 }
 
 textarea {
-	width: 43%;
+	width: 42%;
 	height: 200px;
 	max-height: 200px;
-	vertical-align: center;
 	margin-right: 2%;
 }
 
-/*textarea:first-child {
+.output1, .output2 {
+	width: 42%;
+	border: 1px solid #121212;
+}
+
+.output1 {
+	float: left;
 	margin-left: 5%;
-} 
-textarea:last-child {
-	margin-right: 5%;
 }
-*/
-/*input {
-	display: inline-block;
+
+.output2 {
+	float: right;
+	margin-right: 7%;
 }
-*/
-/*.btn{
-	
-	margin: auto;
-	width: 20%
-}
-*/
 
 .inputs div{
 	text-align: center;
@@ -40,27 +36,18 @@ textarea:last-child {
 }
 
 .result {
-    /*background-color: lightgray;*/
-    position: absolute;
-    margin: 0 5% 0 5%;
-    width: 88%;
-}
-
-.child {
-	cursor: pointer;
 }
 
 .change {
-	color: blue;
+	background-color: #0165b2;
 }
 
 .add {
-	color: green;
+	background-color: green;
 }
 
 .remove {
-	color: red;
-	text-decoration: line-through;
+	background-color: red;
 }
  
 .strike {
@@ -75,10 +62,10 @@ textarea:last-child {
 	padding-left: 6%;
 }
 
-/*.level-1 {
-	background-image: url('../collapse.png');
-	background-repeat: no-repeat;
-	cursor: pointer;
+.level-2 ul, .level-3 {
+	padding-left: 8%;
 }
-*/
  
+.level-3 ul, .level-4 {
+	padding-left: 10%;
+}

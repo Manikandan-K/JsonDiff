@@ -24,11 +24,14 @@ var diff = function() {
 
 	var diff = findDifference(result1["json"], result2["json"])
 
-	if(diff.getAction() == COMPARISON.SAME) {
-		$('.result').text("No difference");
-	} else {
-		display(diff);
-	}
+	$('.output1').append( formateJson1(diff, "value1" ));
+	$('.output2').append( formateJson1(diff, "value2" ));
+	// if(diff.getAction() == COMPARISON.SAME) {
+	// 	$('.result').text("No difference");
+	// } else {
+	// 	$('.output1').append(formateJson1(diff));
+	// 	display(diff);
+	// }
 }
 
 var beautify = function() {
@@ -76,7 +79,8 @@ var clearError = function() {
 }
 
 var clearResult = function() {
-	$('.result').text("");
+	$('.output1').text("");
+	$('.output2').text("");
 }
 
 var getInput = function(elementId) {
