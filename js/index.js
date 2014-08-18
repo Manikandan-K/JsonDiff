@@ -24,14 +24,12 @@ var diff = function() {
 
 	var diff = findDifference(result1["json"], result2["json"])
 
-	$('.output1').append( formateJson1(diff, "value1" ));
-	$('.output2').append( formateJson1(diff, "value2" ));
-	// if(diff.getAction() == COMPARISON.SAME) {
-	// 	$('.result').text("No difference");
-	// } else {
-	// 	$('.output1').append(formateJson1(diff));
-	// 	display(diff);
-	// }
+	if(diff.getAction() == COMPARISON.SAME) {
+		$('.errors').text("No difference");
+	} else {
+		$('.output1').append( formateJson1(diff, "value1" ));
+		$('.output2').append( formateJson1(diff, "value2" ));
+	}
 }
 
 var beautify = function() {
