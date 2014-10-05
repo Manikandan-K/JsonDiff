@@ -6,6 +6,10 @@ ul {
 	background-color: red;
 }
 
+.error1, .error2 {
+	width: 42%;
+}
+
 textarea {
 	width: 42%;
 	height: 200px;

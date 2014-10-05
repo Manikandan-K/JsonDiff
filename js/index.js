@@ -18,7 +18,7 @@ var diff = function() {
 	var result2 = convertToJson(input2);
 
 	if( result1["error"] || result2["error"]) {
-		setError(result1["error"]+ result2["error"]);
+		setError(result1["error"],  result2["error"]);
 		return;
 	}
 
@@ -68,12 +68,13 @@ var clearNonInputValues = function() {
 	clearResult();
 }
 
-var setError = function(msg) {
-	$('.errors').text(msg);
+var setError = function(msg1, msg2) {
+	$('.error1').text(msg1);
+	$('.error2').text(msg2);
 }
 
 var clearError = function() {
-	setError("");
+	setError("", "");
 }
 
 var clearResult = function() {
