@@ -2,6 +2,10 @@ ul {
 	margin: 0;
 }
 
+body h1{
+    text-align: center;
+}
+
 #popup {
 	background-color: red;
 }
@@ -15,11 +19,37 @@ textarea {
 	height: 200px;
 	max-height: 200px;
 	margin-right: 2%;
+    font-size: 12px;
 }
 
 .output1, .output2 {
 	width: 42%;
 	border: 1px solid #121212;
+}
+
+.controls {
+    padding: 8px;
+}
+
+.btn {
+    cursor: pointer;
+    background: #3e9cbf;
+    border: 1px solid #3e9cbf;
+    color: #fff;
+    font-size: 13px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 4px #3e9cbf;
+    margin-right: 5px;
+}
+
+.btn:hover, .btn:focus {
+    background: #3c81a5;
+    box-shadow: 0px 0px 1px #3e9cbf;
+    outline: 0;
+}
+
+.result {
+    display: none;
 }
 
 .output1 {
@@ -54,13 +84,13 @@ textarea {
 .remove {
 	background-color: #e34;
 }
- 
+
 .strike {
 	text-decoration: line-through;
 }
 
 .level-0 ul, .level-1 {
-	padding-left: 2%; 
+	padding-left: 2%;
 }
 
 .level-1 ul, .level-2 {
@@ -70,7 +100,7 @@ textarea {
 .level-2 ul, .level-3 {
 	padding-left: 4%;
 }
- 
+
 .level-3 ul, .level-4 {
 	padding-left: 5%;
 }

@@ -27,6 +27,7 @@ var diff = function() {
 	if(diff.getAction() == COMPARISON.SAME) {
 		$('.errors').text("No difference");
 	} else {
+        $('.result').show();
 		$('.output1').append( formateJson1(diff, "value1" ));
 		$('.output2').append( formateJson1(diff, "value2" ));
 	}
@@ -78,6 +79,7 @@ var clearError = function() {
 }
 
 var clearResult = function() {
+    $('.result').hide();
 	$('.output1').text("");
 	$('.output2').text("");
 }
