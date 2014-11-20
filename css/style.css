@@ -14,33 +14,27 @@ body h1 {
     width: 42%;
 }
 
-.labels {
-    padding-bottom: 4px;
-}
-
-#json1_label {
-    margin-left: 77px;
-}
-
-#json2_label {
-    margin-left: 510px;
-}
-
-.jsons {
+.inputs{
     text-align: center;
 }
 
-textarea {
-    width: 42%;
+#json1_label, #json2_label{
+    margin-bottom: 8px;
+    width: 50%;
+    text-align: center;
+}
+
+#json1, #json2{
+    width: 99%;
     height: 200px;
     max-height: 200px;
-    margin-right: 2%;
     font-size: 12px;
 }
 
-.output1, .output2 {
+.json_input1, .json_input2 {
+    display: inline-block;
     width: 42%;
-    border: 1px solid #121212;
+    margin-right: 2%;
 }
 
 .controls {
@@ -67,16 +61,16 @@ textarea {
 
 .result {
     display: none;
+    text-align: center;
+    margin-top: 2px;
 }
 
-.output1 {
-    float: left;
-    margin-left: 5%;
-}
-
-.output2 {
-    float: right;
-    margin-right: 7%;
+.output1, .output2 {
+    width: 42%;
+    display: inline-block;
+    margin-right: 2%;
+    border: 1px solid #121212;
+    text-align: left;
 }
 
 .errors {
