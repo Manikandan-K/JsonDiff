@@ -4,12 +4,13 @@ ul {
 
 body{
     margin: 0px;
+    background: #f7f5ee;
 }
 header{
     height: 50px;
     vertical-align: middle;
     background: #3e9cbf;
-    color: #fff;
+    color: #f7f5ee;
     box-shadow: 0px 0px 10px #46B3D9;
 }
 
@@ -60,7 +61,7 @@ h1 {
     cursor: pointer;
     background: #3e9cbf;
     border: 1px solid #3e9cbf;
-    color: #fff;
+    color: #f7f5ee;
     font-size: 13px;
     border-radius: 5px;
     box-shadow: 0px 0px 4px #3e9cbf;
@@ -85,6 +86,7 @@ h1 {
     margin-right: 2%;
     border: 1px solid #121212;
     text-align: left;
+    background-color: #fff;
 }
 
 .errors {
