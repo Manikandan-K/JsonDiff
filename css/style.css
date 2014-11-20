@@ -1,34 +1,51 @@
 ul {
-	margin: 0;
+    margin: 0;
 }
 
-body h1{
+body h1 {
     text-align: center;
 }
 
 #popup {
-	background-color: red;
+    background-color: red;
 }
 
 .error1, .error2 {
-	width: 42%;
+    width: 42%;
+}
+
+.labels {
+    padding-bottom: 4px;
+}
+
+#json1_label {
+    margin-left: 77px;
+}
+
+#json2_label {
+    margin-left: 510px;
+}
+
+.jsons {
+    text-align: center;
 }
 
 textarea {
-	width: 42%;
-	height: 200px;
-	max-height: 200px;
-	margin-right: 2%;
+    width: 42%;
+    height: 200px;
+    max-height: 200px;
+    margin-right: 2%;
     font-size: 12px;
 }
 
 .output1, .output2 {
-	width: 42%;
-	border: 1px solid #121212;
+    width: 42%;
+    border: 1px solid #121212;
 }
 
 .controls {
     padding: 8px;
+    text-align: center;
 }
 
 .btn {
@@ -53,62 +70,57 @@ textarea {
 }
 
 .output1 {
-	float: left;
-	margin-left: 5%;
+    float: left;
+    margin-left: 5%;
 }
 
 .output2 {
-	float: right;
-	margin-right: 7%;
+    float: right;
+    margin-right: 7%;
 }
-
-.inputs div{
-	text-align: center;
-}
-
 
 .errors {
-	color: red;
-	margin-bottom: 10px;
-	margin-left: 5%;
+    color: red;
+    margin-bottom: 10px;
+    margin-left: 5%;
 }
 
 .change {
-	background-color: #a4c5ff;
+    background-color: #a4c5ff;
 }
 
 .add {
-	background-color: #DFD;
+    background-color: #DFD;
 }
 
 .remove {
-	background-color: #FDD;
+    background-color: #FDD;
 }
 
 .strike {
-	text-decoration: line-through;
+    text-decoration: line-through;
 }
 
 .level-0 ul, .level-1 {
-	padding-left: 2%;
+    padding-left: 2%;
 }
 
 .level-1 ul, .level-2 {
-	padding-left: 3%;
+    padding-left: 3%;
 }
 
 .level-2 ul, .level-3 {
-	padding-left: 4%;
+    padding-left: 4%;
 }
 
 .level-3 ul, .level-4 {
-	padding-left: 5%;
+    padding-left: 5%;
 }
 
 .level-4 ul, .level-5 {
-	padding-left: 6%;
+    padding-left: 6%;
 }
 
 .level-5 ul, .level-6 {
-	padding-left: 7%;
+    padding-left: 7%;
 }
